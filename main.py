@@ -11,7 +11,7 @@ def run_day(day_to_run: int):
     start = time.time()
     result = day_module.solve(input_data)
     elapsed = time.time() - start
-    print(f'Day {day_to_run:02d} result ({elapsed:.3f}s): \n {result}')
+    print(f'\033[92mDay {day_to_run:02d} result ({elapsed:.3f}s): \n {result}\033[0m')
 
 if __name__ == '__main__':
     day = int(sys.argv[1]) if len(sys.argv) > 1 else 1
