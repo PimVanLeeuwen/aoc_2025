@@ -2,19 +2,20 @@ import re
 from math import prod
 
 # Yield successive n-sized chunks from lst.
-def chunks (lst, n):
-    for i in range(0, len(lst), n):
-        yield lst[i:i + n]
+def array_chunks(lst, n):
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
 
 # Return all 8-directional neighbors for (r, c) in a grid.
 def neighbors_8(y, x, rows, cols):
+    neighbors = []
     for dr in [-1, 0, 1]:
         for dc in [-1, 0, 1]:
             if dr == 0 and dc == 0:
                 continue
             nr, nc = y + dr, x + dc
             if 0 <= nr < rows and 0 <= nc < cols:
-                yield nr, nc
+                neighbors.append((nr, nc))
+    return neighbors
 
 # Extract all integers from a string.
 def extract_ints(s):
