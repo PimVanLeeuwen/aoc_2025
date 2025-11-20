@@ -1,3 +1,33 @@
+import re
+from math import prod
+
+# Yield successive n-sized chunks from lst.
+def chunks (lst, n):
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
+# Return all 8-directional neighbors for (r, c) in a grid.
+def neighbors_8(y, x, rows, cols):
+    for dr in [-1, 0, 1]:
+        for dc in [-1, 0, 1]:
+            if dr == 0 and dc == 0:
+                continue
+            nr, nc = y + dr, x + dc
+            if 0 <= nr < rows and 0 <= nc < cols:
+                yield nr, nc
+
+# Extract all integers from a string.
+def extract_ints(s):
+    return list(map(int, re.findall(r'-?\d+', s)))
+
+# product of all items in a list
+def prod_list(lst):
+    return prod(lst)
+
+# Manhattan distance between points a and b.
+def manhattan(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
 def read_input(day: int) -> str:
     with open(f'inputs/day{day:02d}.txt', 'r') as file:
         return file.read()
