@@ -64,6 +64,10 @@ def dfs_grid(grid, start, is_valid=lambda r, c: True):
             stack.append((r+dr, c+dc))
     return visited
 
+# Extract all single uppercase letters from a string.
+def extract_letters(s):
+    return re.findall(r'\b([A-Z])\b', s)
+
 from collections import deque
 def bfs_grid(grid, start, is_valid=lambda r, c: True):
     rows, cols = len(grid), len(grid[0])
